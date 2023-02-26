@@ -17,6 +17,7 @@
 		3.4.3 - Configurar a mira para MousePosition e Analog.Right
 		3.4.4 - Fazer a animação tocar somente quando o player se mover
 	3.5 - Anexar a arma as 8 direções do player
+	3.6 - Arrumar bug da velocidade diagonal do boneco
 
 
 

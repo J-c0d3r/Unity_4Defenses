@@ -23,12 +23,12 @@ public class PlayerController : MonoBehaviour
     {
         Move();
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             gunMG.SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             gunFlame.SetActive(true);
         }
@@ -44,17 +44,37 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 moveDirect = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+        // moveDirect.Normalize();
         transform.position += moveDirect * speed * Time.deltaTime;
+        if (moveDirect.x == 0 && moveDirect.y == 0)
+        {
+            anim.SetFloat("Speed", 0);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 1);
+        }
 
 
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
+        direction.Normalize();
+
         anim.SetFloat("Horizontal", direction.x);
         anim.SetFloat("Vertical", direction.y);
 
 
+        // Debug.Log(transform.position.x);
+        // Debug.Log("Before: " + mousePos.x);
+        // Debug.Log("After: " + direction.x);
 
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log("colidiu");
     }
 }
