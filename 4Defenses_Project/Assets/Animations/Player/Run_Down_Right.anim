@@ -63,6 +63,22 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Guns/GunMG
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.455, y: -0.318, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Guns/GunShotGun
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
@@ -91,6 +107,13 @@ AnimationClip:
       value: {fileID: 21300000, guid: f612fa4e58ba5a6499658982f2a71a3c, type: 3}
     attribute: m_Sprite
     path: Guns/GunMG
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 2d9c6c0fa76ba874684adc397c069ec3, type: 3}
+    attribute: m_Sprite
+    path: Guns/GunShotGun
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 8
@@ -122,6 +145,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
+      path: 3712061306
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
       path: 2631694184
       attribute: 1
       script: {fileID: 0}
@@ -142,6 +172,13 @@ AnimationClip:
       typeID: 4
       customType: 0
       isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3712061306
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
     pptrCurveMapping:
     - {fileID: 1525605516, guid: 2a2a41da45afa2c498e805dded45cbb0, type: 3}
     - {fileID: 1749667354, guid: 2a2a41da45afa2c498e805dded45cbb0, type: 3}
@@ -149,6 +186,7 @@ AnimationClip:
     - {fileID: 255889329, guid: 2a2a41da45afa2c498e805dded45cbb0, type: 3}
     - {fileID: 21300000, guid: fdd2c9a32ba80e44db4374cd09517f9b, type: 3}
     - {fileID: 21300000, guid: f612fa4e58ba5a6499658982f2a71a3c, type: 3}
+    - {fileID: 21300000, guid: 2d9c6c0fa76ba874684adc397c069ec3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -339,6 +377,63 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
     path: Guns/GunMG
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.455
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: Guns/GunShotGun
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.318
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: Guns/GunShotGun
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: Guns/GunShotGun
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []

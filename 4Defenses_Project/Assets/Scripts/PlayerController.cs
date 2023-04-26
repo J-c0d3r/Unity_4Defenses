@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-
     [SerializeField] private float speed;
     [SerializeField] private Animator anim;
 
     [SerializeField] private GameObject gunMG;
     [SerializeField] private GameObject gunFlame;
+
+    private Text txt;
 
     void Start()
     {
