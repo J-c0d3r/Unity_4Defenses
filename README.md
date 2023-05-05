@@ -13,6 +13,11 @@ The idea of this game is you need to protect your base from monsters that come t
 <details>
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
+    0️⃣v0.3.0
+    ✔️Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
+    ✔️Improve Player's movimentation(collision, rigidbody, ...)
+    🚧Implement each bullet of each gun
+
     0️⃣v0.2.0
     ♻️Readme updated
     🔥Remove .vscode and UserSettings from repository
@@ -40,9 +45,9 @@ The idea of this game is you need to protect your base from monsters that come t
 
 - [x] Implement first character
 - [x] Implement 8 directions of player
-- [ ] Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
+- [x] Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
 - [ ] Implement each bullet of each gun
-- [ ] Improve Player's movimentation(collision, rigidbody, ...)
+- [x] Improve Player's movimentation(collision, rigidbody, ...)
 - [ ] Add possibility to player switch your character
 - [ ] Implement different stats(skills) for every characters like life, move and damage
 - [ ] A little upgrade system(move, damage, life, speed shoot, countdown reloading...)
