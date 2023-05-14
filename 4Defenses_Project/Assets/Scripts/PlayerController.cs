@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
-        direction.Normalize();
+        direction.Normalize();        
 
         anim.SetFloat("Horizontal", direction.x);
         anim.SetFloat("Vertical", direction.y);

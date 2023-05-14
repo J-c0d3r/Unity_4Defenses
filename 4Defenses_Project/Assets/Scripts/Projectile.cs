@@ -4,45 +4,62 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] protected float speed;
     [SerializeField] private float timeToSelfDestroy;
     //private float timeCount;
     //[SerializeField] private float reloadShoot;
 
 
     //[SerializeField] private GameObject proj;
-    //private Animator anim;
-    private Rigidbody2D rig;
-    private SpriteRenderer sr;
+    private Animator anim;
+    protected Rigidbody2D rig;
+    protected SpriteRenderer sr;
 
 
-    void Start()
+    protected void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
 
-        rig.velocity = transform.right * speed;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+        direction.Normalize();
 
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        if (transform.rotation.eulerAngles.z == 270f)
-        {
-            sr.sortingOrder = 7;
-        }
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        rig.velocity = direction * speed;
+        //rig.velocity = transform.right * speed;
 
-        Destroy(gameObject, timeToSelfDestroy);
+        /*
+            if (transform.rotation.eulerAngles.z == 270f)
+            {
+                sr.sortingOrder = 7;
+            }
+        */
+
+        StartCoroutine(ChangingAnimation());
+        //Destroy(gameObject, timeToSelfDestroy);
 
     }
 
 
     void Update()
     {
-
-
+        //if (!Input.GetMouseButton(0))
+        //{
+        //    StartCoroutine(ChangingAnimation());
+        //}
+        
 
     }
 
-    //public void SetDirectionVelocity(Transform point)
-    //{
-    //    rig.velocity = transform.up * speed;
-    //}
+    IEnumerator ChangingAnimation()
+    {
+        anim.SetTrigger("final");
+        yield return new WaitForSeconds(0.2f);
+        Destroy(gameObject);
+    }
 }

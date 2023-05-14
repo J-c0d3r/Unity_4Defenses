@@ -13,6 +13,9 @@ The idea of this game is you need to protect your base from monsters that come t
 <details>
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
+    0️⃣v0.3.1
+    🚧Implement each bullet of each gun. 🐛There are some bugs.
+
     0️⃣v0.3.0
     ✔️Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
     ✔️Improve Player's movimentation(collision, rigidbody, ...)

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  timeToSelfDestroy: 0.7
+  timeToSelfDestroy: 1
 --- !u!212 &4646018287323125426
 SpriteRenderer:
   m_ObjectHideFlags: 0

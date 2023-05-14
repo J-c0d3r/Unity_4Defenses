@@ -30,6 +30,7 @@ public class WeaponController : MonoBehaviour
         {            
             if (timeCount >= reloadShoot)
             {
+                //play audio
                 timeCount = 0f;
                 Instantiate(proj, projPoint.position, projPoint.rotation);
                 
