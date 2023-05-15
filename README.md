@@ -13,6 +13,9 @@ The idea of this game is you need to protect your base from monsters that come t
 <details>
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
+    0️⃣v0.3.2
+    ✔️Implement each bullet of each gun.
+
     0️⃣v0.3.1
     🚧Implement each bullet of each gun. 🐛There are some bugs.
 
@@ -49,7 +52,7 @@ The idea of this game is you need to protect your base from monsters that come t
 - [x] Implement first character
 - [x] Implement 8 directions of player
 - [x] Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
-- [ ] Implement each bullet of each gun
+- [x] Implement each bullet of each gun
 - [x] Improve Player's movimentation(collision, rigidbody, ...)
 - [ ] Add possibility to player switch your character
 - [ ] Implement different stats(skills) for every characters like life, move and damage
@@ -57,7 +60,7 @@ The idea of this game is you need to protect your base from monsters that come t
 
 #### Enemies
 
-- [ ] Implement green enemy(also your explode)
+- [ ] Implement green enemy(also your explosion)
 - [ ] Make green enemy follows player
 - [ ] Make green enemy go to base and explode
 - [ ] Add some spawn points of enemies

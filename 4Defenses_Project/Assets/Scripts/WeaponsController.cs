@@ -9,8 +9,6 @@ public class WeaponsController : MonoBehaviour
     [SerializeField] private List<GameObject> gunsList = new List<GameObject>();
 
 
-
-
     void Start()
     {
         DeactivateAllWeapons();
@@ -38,7 +36,6 @@ public class WeaponsController : MonoBehaviour
         {
             SwitchingWeapon(2);
         }
-
     }
 
     private void SwitchingWeapon(int id)

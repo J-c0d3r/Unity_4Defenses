@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile_Tomato : Projectile
-{   
+{
     private Animator anim;
-    
+
 
     new void Start()
     {
@@ -13,10 +13,11 @@ public class Projectile_Tomato : Projectile
 
         anim = GetComponent<Animator>();
 
-        if (transform.rotation.eulerAngles.z == 270f || transform.rotation.eulerAngles.z == 0f || transform.rotation.eulerAngles.z == 180)
-        {            
+        if ((transform.rotation.eulerAngles.z >= -180f && transform.rotation.eulerAngles.z <= 25f) || transform.rotation.eulerAngles.z >= 155f)
+        {
             base.sr.sortingOrder = 7;
         }
+
         transform.rotation = Quaternion.Euler(Vector3.zero);
 
         StartCoroutine(AnimationsTransitions());
@@ -29,7 +30,11 @@ public class Projectile_Tomato : Projectile
         rig.velocity /= 10f;
     }
 
-    //quando colidir com um inimigo deverá acionar a animação
-    //if para essa checagem
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //StopCoroutine("AnimationsTransitions");
+        anim.SetTrigger("explosion");
+        rig.velocity /= 10f;
+    }
 
 }

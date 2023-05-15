@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
     private Rigidbody2D rb;
-    [SerializeField] private Animator anim;    
+    [SerializeField] private Animator anim;
 
 
     void Start()
@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("Horizontal", direction.x);
         anim.SetFloat("Vertical", direction.y);
+
 
     }
 

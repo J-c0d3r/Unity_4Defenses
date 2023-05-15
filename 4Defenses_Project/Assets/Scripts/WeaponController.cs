@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
-{
+{ 
     private float timeCount;
     [SerializeField] private float reloadShoot;
 
@@ -37,4 +37,5 @@ public class WeaponController : MonoBehaviour
             }
         }
     }
+
 }

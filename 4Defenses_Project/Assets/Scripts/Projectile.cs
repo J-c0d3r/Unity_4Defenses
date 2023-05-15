@@ -6,12 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] protected float speed;
     [SerializeField] private float timeToSelfDestroy;
-    //private float timeCount;
-    //[SerializeField] private float reloadShoot;
 
-
-    //[SerializeField] private GameObject proj;
-    private Animator anim;
+  
     protected Rigidbody2D rig;
     protected SpriteRenderer sr;
 
@@ -19,8 +15,7 @@ public class Projectile : MonoBehaviour
     protected void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();        
 
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -31,35 +26,14 @@ public class Projectile : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
         rig.velocity = direction * speed;
-        //rig.velocity = transform.right * speed;
 
-        /*
-            if (transform.rotation.eulerAngles.z == 270f)
-            {
-                sr.sortingOrder = 7;
-            }
-        */
-
-        StartCoroutine(ChangingAnimation());
-        //Destroy(gameObject, timeToSelfDestroy);
+        Destroy(gameObject, timeToSelfDestroy);
 
     }
 
-
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //if (!Input.GetMouseButton(0))
-        //{
-        //    StartCoroutine(ChangingAnimation());
-        //}
-        
-
-    }
-
-    IEnumerator ChangingAnimation()
-    {
-        anim.SetTrigger("final");
-        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
+
 }
