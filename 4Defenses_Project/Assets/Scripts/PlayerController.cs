@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool isAlive;
 
+    [Header("Attributes")]
+    [SerializeField] private float totalLife;
+    [SerializeField] private float currentLife;
     [SerializeField] private float speed;
+
 
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -15,15 +21,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentLife = totalLife;
     }
 
 
     void Update()
     {
         Move();
-
-
-
     }
 
     void FixedUpdate()
@@ -31,7 +35,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movement * speed * Time.fixedDeltaTime;
 
         if (movement == Vector2.zero)
-        {           
+        {
             anim.SetFloat("Speed", 0);
         }
         else
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour
         //PlayerMovimentation
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        
+
         if (Input.GetButton("Horizontal_Keyboard") || Input.GetButton("Vertical_Keyboard"))
         {
             movement.x = Input.GetAxisRaw("Horizontal_Keyboard");
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-        
+
 
         //if (Input.GetButton("Horizontal_Keyboard") || Input.GetButton("Vertical_Keyboard"))
         //{
@@ -108,12 +112,24 @@ public class PlayerController : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
-        direction.Normalize();        
+        direction.Normalize();
 
         anim.SetFloat("Horizontal", direction.x);
         anim.SetFloat("Vertical", direction.y);
 
 
+    }
+
+    public void GetDamage(float dmg)
+    {
+        currentLife -= dmg;
+
+        //lifeBar.fillAmount = currentLife / totalLife;
+
+        if (currentLife <= 0)
+        {
+            Debug.Log("morri");
+        }
     }
 
 }

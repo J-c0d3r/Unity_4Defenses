@@ -55,8 +55,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a54664c62ab88864d8adf52305188eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 3
   speed: 1
-  timeToSelfDestroy: 0.2
+  timeToSelfDestroy: 0
 --- !u!95 &513104313184368355
 Animator:
   serializedVersion: 5

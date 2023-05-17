@@ -13,6 +13,15 @@ The idea of this game is you need to protect your base from monsters that come t
 <details>
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
+    0️⃣v0.4.0
+    ✔️Put base in the scenario and implement your functions
+    ✔️Implement green enemy(also your explosion)
+    ✔️Make green enemy go to base and explode
+    ✔️Implement new enemies with different color
+    ✔️Make a big green enemy as a boss
+    ✔️Implement AI in the minions enemies
+    ♻️Code improved. Abstract Projectile. Hierarchy.
+
     0️⃣v0.3.2
     ✔️Implement each bullet of each gun.
 
@@ -57,16 +66,18 @@ The idea of this game is you need to protect your base from monsters that come t
 - [ ] Add possibility to player switch your character
 - [ ] Implement different stats(skills) for every characters like life, move and damage
 - [ ] A little upgrade system(move, damage, life, speed shoot, countdown reloading...)
+- [ ] Implement damage stats visual when player take any damage
 
 #### Enemies
 
-- [ ] Implement green enemy(also your explosion)
-- [ ] Make green enemy follows player
-- [ ] Make green enemy go to base and explode
+- [x] Implement green enemy(also your explosion)
+- [x] Make green enemy follows player
+- [x] Make green enemy go to base and explode
 - [ ] Add some spawn points of enemies
-- [ ] Found some good AI for to implement in enemies
-- [ ] Make a big green enemy as a boss
-- [ ] Implement new enemies with different color
+- [x] Implement AI in the minions enemies
+- [ ] Implement AI boss
+- [x] Make a big green enemy as a boss
+- [x] Implement new enemies with different color
 
 #### Resources
 
@@ -80,7 +91,7 @@ The idea of this game is you need to protect your base from monsters that come t
 #### Scenario
 
 - [ ] Just draw the scenario
-- [ ] Put base in the scenario and implement your functions
+- [x] Put base in the scenario and implement your functions
 - [ ] Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
 
 #### UI
@@ -93,7 +104,7 @@ The idea of this game is you need to protect your base from monsters that come t
 
 - [ ] Menu Game
 - [ ] Configuration screen
-- [ ] Game Over (When base fall down)
+- [ ] Game Over (When base fall down or all players die)
 
 #### Audios
 
@@ -109,13 +120,16 @@ The idea of this game is you need to protect your base from monsters that come t
 
 ### 🐛Fix Bugs:<br>
 
-- [ ] ...
+- [ ] When the player shoots with shotgun downwards, he receives a knockback upwards
+- [ ] When time to follow player of enemy is between 0 and 3 and player inside in one of those circles, the enemy be lost until player get out the major area
 
 <br>
 
-### 🛠️Some Ajusts:<br>
+### 🛠️Some Ajusts/Upgrades:<br>
 
 - [ ] General balancement in the game
+- [ ] Change the style fire of flamegun to some spawn points flames
+- [ ] Add effect of smoke when the player shoots
 
 <br>
 
