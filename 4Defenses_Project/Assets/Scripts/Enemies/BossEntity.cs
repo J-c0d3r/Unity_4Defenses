@@ -26,13 +26,14 @@ public abstract class BossEntity : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rig;
     protected Vector2 movePosition;
-    protected Collider2D collider;
+    protected new Collider2D collider;
 
     [Header("Associations")]
     [SerializeField] protected Transform baseTarget;
     [SerializeField] protected Transform playerTarget;
     [SerializeField] protected GameObject explosionAtk;
     [SerializeField] protected List<Transform> spawnPoints;
+    [SerializeField] protected List<GameObject> minionsList;
 
 
     protected void Start()
@@ -42,7 +43,7 @@ public abstract class BossEntity : MonoBehaviour
         collider = GetComponent<Collider2D>();
         baseTarget = GameObject.FindGameObjectWithTag("Base").transform;
 
-        //playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
 
         //speed = Random.Range(minSpeed, maxSpeed);
 

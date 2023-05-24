@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponsController : MonoBehaviour
 {
+    private bool weaponsCanSwitch;
     [SerializeField] private int currentWeapon = -1;
 
     [SerializeField] private List<GameObject> gunsList = new List<GameObject>();
@@ -12,12 +13,14 @@ public class WeaponsController : MonoBehaviour
     void Start()
     {
         DeactivateAllWeapons();
+        weaponsCanSwitch = true;
     }
 
 
     void Update()
     {
-        SelectWeapon();     
+        if (weaponsCanSwitch)
+            SelectWeapon();
     }
 
     private void SelectWeapon()
@@ -50,6 +53,15 @@ public class WeaponsController : MonoBehaviour
         for (int i = 0; i < gunsList.Count; i++)
         {
             gunsList[i].SetActive(false);
+        }
+    }
+
+    public void UnlockAllWeapons(bool state)
+    {
+        weaponsCanSwitch = state;
+        for (int i = 0; i < gunsList.Count; i++)
+        {
+            gunsList[i].GetComponent<WeaponController>().canShoot = state;
         }
     }
 }

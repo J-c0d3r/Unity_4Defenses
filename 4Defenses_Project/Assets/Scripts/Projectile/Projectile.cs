@@ -10,6 +10,7 @@ public abstract class Projectile : MonoBehaviour
     
     protected Rigidbody2D rig;
     protected SpriteRenderer sr;
+    [SerializeField] protected GameObject touchExplosion;
 
     protected void Start()
     {
@@ -35,5 +36,7 @@ public abstract class Projectile : MonoBehaviour
     }
 
     protected abstract void OnTriggerEnter2D(Collider2D collision);
+
+    protected abstract void OnCollisionEnter2D(Collision2D collision);
 
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 561303107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561303106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.121, y: -0.835, z: 0}
+  m_LocalPosition: {x: 0, y: -1.092, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 692522447}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnPoint4
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692522446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.759, y: -0.58, z: 0}
+  m_LocalPosition: {x: -0.941, y: -0.663, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1386796518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnPoint5
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -86,43 +86,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386796517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.85, y: 0.349, z: 0}
+  m_LocalPosition: {x: -1.151, y: 0.101, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7447508018876170701}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1496512878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1496512879}
-  m_Layer: 0
-  m_Name: spawnPoint6
-  m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1496512879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496512878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.167, y: 0.848, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7447508018876170701}
-  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1538002419
 GameObject:
@@ -135,7 +104,7 @@ GameObject:
   - component: {fileID: 1538002420}
   - component: {fileID: 1538002421}
   - component: {fileID: 1538002422}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ExplosionDie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7447508018876170701}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1538002421
 SpriteRenderer:
@@ -239,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866709644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -254,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866709643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.725, y: -0.381, z: 0}
+  m_LocalPosition: {x: 0.838, y: -0.663, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -270,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2077252988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
@@ -285,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077252987}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66, y: 0.44, z: 0}
+  m_LocalPosition: {x: 1.042, y: 0.101, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +273,7 @@ GameObject:
   - component: {fileID: 7447508018614087715}
   - component: {fileID: 7447508018614087714}
   - component: {fileID: 7447508018614087713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +376,7 @@ GameObject:
   - component: {fileID: 7447508018876170699}
   - component: {fileID: 7447508018876170702}
   - component: {fileID: 7447508018876170703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slime_Green_Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -422,7 +391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7447508018876170698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.96, y: -7.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -432,7 +401,6 @@ Transform:
   - {fileID: 561303107}
   - {fileID: 692522447}
   - {fileID: 1386796518}
-  - {fileID: 1496512879}
   - {fileID: 1538002420}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -449,25 +417,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5696b8655a327b24c97746964219d42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLife: 30
+  totalLife: 100
   currentLife: 0
   minSpeed: 0
   maxSpeed: 0
-  speed: 0
-  dmgExplosion: 0
+  speed: 4
+  dmgExplosion: 10
   dmgCollision: 5
   lifeBar: {fileID: 7447508019463458554}
   canvasBar: {fileID: 7447508018614087711}
   baseTarget: {fileID: 0}
   playerTarget: {fileID: 0}
-  explosionAtk: {fileID: 0}
+  explosionAtk: {fileID: 1315323042958494594, guid: b6238247246b1694f89f26d8b4207c26, type: 3}
   spawnPoints:
   - {fileID: 2077252988}
   - {fileID: 1866709644}
   - {fileID: 561303107}
   - {fileID: 692522447}
   - {fileID: 1386796518}
-  - {fileID: 1496512879}
+  minionsList:
+  - {fileID: 7447508018876170698, guid: 6eb963e9e494ae744a30634b55520435, type: 3}
+  - {fileID: 7447508018876170698, guid: 2553257efa0f2a24d8e01f5972766b1f, type: 3}
+  - {fileID: 7447508018876170698, guid: 5db9569117b423a418981ee9b6d8d643, type: 3}
+  timeBoostSpd: 10
+  timeAtk: 0.5
+  timeSpawn: 5
+  timeSpawnEachEnemy: 0.25
+  timeExitGoToBaseBehaviour: 10
+  timeAtkExplosion: 3
   explosionDeath: {fileID: 1538002419}
 --- !u!212 &7447508018876170700
 SpriteRenderer:
@@ -509,7 +486,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 2014669811, guid: 70288d828214f7a4ba41a625d843b2a1, type: 3}
   m_Color: {r: 0.19215687, g: 0.84313726, b: 0, a: 1}
   m_FlipX: 0
@@ -566,11 +543,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7447508018876170698}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -590,7 +567,7 @@ GameObject:
   - component: {fileID: 7447508019058564932}
   - component: {fileID: 7447508019058564934}
   - component: {fileID: 7447508019058564933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LifeBarTotal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +644,7 @@ GameObject:
   - component: {fileID: 7447508019463458553}
   - component: {fileID: 7447508019463458555}
   - component: {fileID: 7447508019463458554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LifeBarActual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7447508018614087715}
   - component: {fileID: 7447508018614087714}
   - component: {fileID: 7447508018614087713}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7447508018614087714
 MonoBehaviour:
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 7447508018876170699}
   - component: {fileID: 7447508018876170702}
   - component: {fileID: 7447508018876170703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slime_BackGreen_Minion
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7447508018876170698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.96, y: -7.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec7c556cb8f87c4aaa45039b375585e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSonOfBoss: 0
   totalLife: 60
   currentLife: 0
   minSpeed: 0.5
@@ -159,11 +160,13 @@ MonoBehaviour:
   dmgCollision: 1
   minorPlayerArea: 3.5
   majorPlayerArea: 6
+  timeCanRun: 1.5
   lifeBar: {fileID: 7447508019463458554}
   canvasBar: {fileID: 7447508018614087711}
   baseTarget: {fileID: 0}
   playerTarget: {fileID: 0}
   explosion: {fileID: 1315323042958494594, guid: b6238247246b1694f89f26d8b4207c26, type: 3}
+  explosion0: {fileID: 3203709474257794933, guid: 1491786a8cfa2ed4e874f813dd0c39fa, type: 3}
 --- !u!212 &7447508018876170700
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -285,7 +288,7 @@ GameObject:
   - component: {fileID: 7447508019058564932}
   - component: {fileID: 7447508019058564934}
   - component: {fileID: 7447508019058564933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LifeBarTotal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +365,7 @@ GameObject:
   - component: {fileID: 7447508019463458553}
   - component: {fileID: 7447508019463458555}
   - component: {fileID: 7447508019463458554}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LifeBarActual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -47,8 +47,8 @@ public class Projectile_Tomato : Projectile
         //}
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {        
         StopCoroutine("AnimationsTransitions");
         anim.SetTrigger("explosion");
         rig.velocity /= 10f;

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
-{ 
+{
+    public bool canShoot;
     private float timeCount;
     [SerializeField] private float reloadShoot;
 
@@ -14,26 +15,27 @@ public class WeaponController : MonoBehaviour
 
     void Start()
     {
-        
+        canShoot = true;
     }
 
-    
+
     void Update()
     {
-        ToShoot();
+        if (canShoot)
+            ToShoot();
     }
 
     private void ToShoot()
     {
         timeCount += Time.deltaTime;
         if (Input.GetMouseButton(0) && gameObject.activeSelf)
-        {            
+        {
             if (timeCount >= reloadShoot)
             {
                 //play audio
                 timeCount = 0f;
                 Instantiate(proj, projPoint.position, projPoint.rotation);
-                
+
             }
         }
     }

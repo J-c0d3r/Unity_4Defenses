@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3587699998824155660}
   - component: {fileID: 3587699998824155663}
   - component: {fileID: 3587699998824155760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sgBullet
   m_TagString: bulletPlayer
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3587699998824155659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,6 +51,7 @@ MonoBehaviour:
   damage: 10
   speed: 40
   timeToSelfDestroy: 0
+  touchExplosion: {fileID: 5808244212922021929, guid: 3cd99bd6526f26a4aac94c4820fff7d2, type: 3}
 --- !u!212 &3587699998824155661
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool canMove;
     private bool isAlive;
+    private bool wasDisableShoot;
+    private float timecountCanGetDmg;
 
     [Header("Attributes")]
+    [SerializeField] private float timeCanGetDmg;
     [SerializeField] private float totalLife;
     [SerializeField] private float currentLife;
     [SerializeField] private float speed;
@@ -16,18 +21,43 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rb;
     [SerializeField] private Animator anim;
+    [SerializeField] private Image lifeBar;
+    [SerializeField] private SpriteRenderer spriteR;
+    [SerializeField] private GameObject weaponsCont;
 
 
     void Start()
-    {
+    {        
         rb = GetComponent<Rigidbody2D>();
         currentLife = totalLife;
+        canMove = true;
+        isAlive = true;
+        wasDisableShoot = true;
     }
 
 
     void Update()
     {
-        Move();
+        timecountCanGetDmg += Time.deltaTime;
+        if (isAlive && canMove)
+        {
+            Move();
+            if (wasDisableShoot)
+            {
+                wasDisableShoot = false;
+                weaponsCont.GetComponent<WeaponsController>().UnlockAllWeapons(true);
+            }
+
+        }
+        else
+        {
+            movement = Vector2.zero;
+            if (!wasDisableShoot)
+            {
+                wasDisableShoot = true;
+                weaponsCont.GetComponent<WeaponsController>().UnlockAllWeapons(false);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -122,13 +152,41 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(float dmg)
     {
-        currentLife -= dmg;
-
-        //lifeBar.fillAmount = currentLife / totalLife;
-
-        if (currentLife <= 0)
+        if (timecountCanGetDmg >= timeCanGetDmg && isAlive)
         {
-            Debug.Log("morri");
+            timecountCanGetDmg = 0f;
+            StartCoroutine(DmgEffect());
+            currentLife -= dmg;
+
+            lifeBar.fillAmount = currentLife / totalLife;
+
+            if (currentLife <= 0)
+            {
+                isAlive = false;
+                Time.timeScale = 0f;
+                FindObjectOfType<GameManager>().ShowGameOver();
+            }
+        }
+    }
+
+    IEnumerator DmgEffect()
+    {
+        spriteR.color = new Color32(255, 88, 66, 255);
+        yield return new WaitForSeconds(0.2f);
+        spriteR.color = new Color32(255, 255, 255, 255);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "gameOver")
+        {
+            FindObjectOfType<GameManager>().ShowGameOver();
+        }
+
+        if (collision.gameObject.name == "victory")
+        {
+            FindObjectOfType<GameManager>().ShowVictory();
         }
     }
 

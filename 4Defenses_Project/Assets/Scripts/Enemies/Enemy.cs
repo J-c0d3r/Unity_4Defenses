@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private bool isAlive;
+    public bool isSonOfBoss;
+    private bool isAlive;    
     private float timeCountToFollowPlayer = 3f;
-
+    private float timecountCanRun;
+    
     [Header("Attributes")]
     [SerializeField] private float totalLife;
     [SerializeField] private float currentLife;
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float dmgCollision;
     [SerializeField] private float minorPlayerArea;
     [SerializeField] private float majorPlayerArea;
+    [SerializeField] private float timeCanRun;
     //[SerializeField] private float towerArea;
 
 
@@ -30,11 +33,13 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rig;
     private Vector2 movePosition;
+    //private WaveSystem_Controller movePosition;?
 
     [Header("Associations")]
     [SerializeField] private Transform baseTarget;
     [SerializeField] private Transform playerTarget;
     [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject explosion0;
 
 
     void Start()
@@ -47,38 +52,49 @@ public class Enemy : MonoBehaviour
         speed = Random.Range(minSpeed, maxSpeed);
         currentLife = totalLife;
         isAlive = true;
+
+        Instantiate(explosion0, transform.position, Quaternion.identity);
+        //put here explosion effect when it is created
     }
 
 
     void Update()
     {
-        if (isAlive)
+        timecountCanRun += Time.deltaTime;
+        if (isAlive && timecountCanRun >= timeCanRun)
         {
             float distance = Vector2.Distance(playerTarget.position, transform.position);
-            
-            //minor area
-            if (distance <= minorPlayerArea && timeCountToFollowPlayer >= 3f)
+
+            if (!isSonOfBoss)
+            {
+                //minor area
+                if (distance <= minorPlayerArea && timeCountToFollowPlayer >= 3f)
+                {
+                    movePosition = (playerTarget.position - transform.position).normalized;
+                    timeCountToFollowPlayer = 0f;
+                    //Debug.Log("minor area");
+                }
+
+                //intermediate/between area/s
+                if (timeCountToFollowPlayer == 0f)
+                {
+                    movePosition = (playerTarget.position - transform.position).normalized;
+                    //Debug.Log("inter area");
+                }
+
+                //major area
+                if (distance > majorPlayerArea)
+                {
+                    movePosition = (baseTarget.position - transform.position).normalized;
+                    timeCountToFollowPlayer += Time.deltaTime;
+                    //Debug.Log("major area");
+                }
+            }
+            else
             {
                 movePosition = (playerTarget.position - transform.position).normalized;
-                timeCountToFollowPlayer = 0f;
-                //Debug.Log("minor area");
             }
 
-            //intermediate/between area/s
-            if (timeCountToFollowPlayer == 0f)
-            {
-                movePosition = (playerTarget.position - transform.position).normalized;
-                //Debug.Log("inter area");
-            }
-
-            //major area
-            if (distance > majorPlayerArea)
-            {
-                movePosition = (baseTarget.position - transform.position).normalized;
-                timeCountToFollowPlayer += Time.deltaTime;
-                //Debug.Log("major area");
-            }
-            
         }
     }
 
@@ -125,13 +141,24 @@ public class Enemy : MonoBehaviour
         rig.velocity = Vector2.zero;
         canvasBar.gameObject.SetActive(false);
         anim.SetTrigger("explosion");
-        Destroy(gameObject, 0.66f);
+        Destroy(gameObject, 0.7f);
     }
 
     public void ExplosionEffect()
     {
         GameObject obj = Instantiate(explosion, transform.position, transform.rotation);
         obj.GetComponent<Explosion>().ReceivingDmg(dmgExplosion);
+    }
+
+    private void OnDestroy()
+    {
+        if (!isSonOfBoss)
+        {
+            //FindObjectOfType<WaveSystem_Controller>().UpdateAmountEnemiesInScene();
+            var obj = FindObjectOfType<WaveSystem_Controller>();
+            if (obj != null)
+                obj.UpdateAmountEnemiesInScene();
+        }
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
@@ -160,5 +187,5 @@ public class Enemy : MonoBehaviour
         //    collision.gameObject.GetComponent<Tower>().GetDamage(dmgCollision);
         //}
     }
-    
+
 }

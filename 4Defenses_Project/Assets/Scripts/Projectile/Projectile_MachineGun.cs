@@ -19,8 +19,8 @@ public class Projectile_MachineGun : Projectile
         //Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {       
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().GetDamage(damage);
@@ -31,6 +31,7 @@ public class Projectile_MachineGun : Projectile
             collision.gameObject.GetComponent<BossEntity>().GetDamage(damage);
         }
 
-        Destroy(gameObject);
+        Instantiate(touchExplosion, transform.position, Quaternion.identity);
+        Destroy(gameObject); 
     }
 }

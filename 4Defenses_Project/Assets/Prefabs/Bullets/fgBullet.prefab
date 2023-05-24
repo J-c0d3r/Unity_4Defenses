@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 513104313184368355}
   - component: {fileID: 513104313184368354}
   - component: {fileID: -1057062253811196619}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: fgBullet
   m_TagString: bulletPlayer
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 513104313744111047}
   - component: {fileID: 513104313744111041}
   - component: {fileID: 513104313744111040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 513104313783049795}
   - component: {fileID: 513104313783049805}
   - component: {fileID: 513104313783049804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 513104314084179157}
   - component: {fileID: 513104314084179159}
   - component: {fileID: 513104314084179158}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 513104315073171224}
   - component: {fileID: 513104315073171226}
   - component: {fileID: 513104315073171225}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 7655270992541139321}
   - component: {fileID: 2028867673097742610}
   - component: {fileID: 5648660542756257656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 5455083922622343389}
   - component: {fileID: 1282612539904744491}
   - component: {fileID: 1475346761509720218}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 1007358063130155953}
   - component: {fileID: 1390555473075801374}
   - component: {fileID: 8332642078089565037}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 1211148670993763215}
   - component: {fileID: 6935139885656270336}
   - component: {fileID: 6147344935950207099}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: flame8
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -51,4 +51,9 @@ public class Projectile_Flame : Projectile
     {
 
     }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Instantiate(touchExplosion, transform.position, Quaternion.identity);
+    }
 }
