@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool wasGameFinished;
     public bool canMove;
     private bool isAlive;
     private bool wasDisableShoot;
@@ -24,10 +25,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image lifeBar;
     [SerializeField] private SpriteRenderer spriteR;
     [SerializeField] private GameObject weaponsCont;
+    [SerializeField] private AudioClip powerUpLifeClip;
 
+    [SerializeField] private List<AudioClip> hitClipList = new List<AudioClip>();
 
     void Start()
-    {        
+    {
         rb = GetComponent<Rigidbody2D>();
         currentLife = totalLife;
         canMove = true;
@@ -152,8 +155,9 @@ public class PlayerController : MonoBehaviour
 
     public void GetDamage(float dmg)
     {
-        if (timecountCanGetDmg >= timeCanGetDmg && isAlive)
+        if (timecountCanGetDmg >= timeCanGetDmg && isAlive && !wasGameFinished)
         {
+            Audio_Controller.instance.PlaySFX(hitClipList[Random.Range(0, hitClipList.Count)]);
             timecountCanGetDmg = 0f;
             StartCoroutine(DmgEffect());
             currentLife -= dmg;
@@ -162,9 +166,11 @@ public class PlayerController : MonoBehaviour
 
             if (currentLife <= 0)
             {
+                wasGameFinished = true;
                 isAlive = false;
                 Time.timeScale = 0f;
-                FindObjectOfType<GameManager>().ShowGameOver();
+                //FindObjectOfType<GameManager>().ShowGameOver();
+                GameManager.instance.ShowGameOver();
             }
         }
     }
@@ -187,6 +193,27 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "victory")
         {
             FindObjectOfType<GameManager>().ShowVictory();
+        }
+
+        if (collision.gameObject.CompareTag("Life"))
+        {
+            if (currentLife < totalLife)
+            {
+                Audio_Controller.instance.PlaySFX(powerUpLifeClip);
+                float lifeDiff = totalLife - currentLife;
+                if (lifeDiff < 10)
+                {
+                    currentLife += lifeDiff;
+                }
+                else
+                {
+                    currentLife += 10;
+                }
+
+                lifeBar.fillAmount = currentLife / totalLife;
+
+                Destroy(collision.gameObject);
+            }
         }
     }
 

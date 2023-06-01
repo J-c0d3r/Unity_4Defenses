@@ -102,6 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1538002420}
+  - component: {fileID: 3214569874929061137}
   - component: {fileID: 1538002421}
   - component: {fileID: 1538002422}
   m_Layer: 8
@@ -126,6 +127,19 @@ Transform:
   m_Father: {fileID: 7447508018876170701}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3214569874929061137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538002419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8af306a751d13a499d5ba1f6d1106cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionClipDeath: {fileID: 8300000, guid: c7e13acce0c93d746ba7c27141e73cae, type: 3}
 --- !u!212 &1538002421
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -376,6 +390,7 @@ GameObject:
   - component: {fileID: 7447508018876170699}
   - component: {fileID: 7447508018876170702}
   - component: {fileID: 7447508018876170703}
+  - component: {fileID: 7091154702001398435}
   m_Layer: 8
   m_Name: Slime_Green_Boss
   m_TagString: Boss
@@ -417,18 +432,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5696b8655a327b24c97746964219d42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLife: 100
+  totalLife: 5500
   currentLife: 0
   minSpeed: 0
   maxSpeed: 0
-  speed: 4
-  dmgExplosion: 10
+  speed: 4.4
+  dmgExplosion: 15
   dmgCollision: 5
   lifeBar: {fileID: 7447508019463458554}
   canvasBar: {fileID: 7447508018614087711}
   baseTarget: {fileID: 0}
   playerTarget: {fileID: 0}
   explosionAtk: {fileID: 1315323042958494594, guid: b6238247246b1694f89f26d8b4207c26, type: 3}
+  explosionAtkClip: {fileID: 8300000, guid: c3583a2657bd3d74e9ac5fd2dfdd97b7, type: 3}
   spawnPoints:
   - {fileID: 2077252988}
   - {fileID: 1866709644}
@@ -439,13 +455,21 @@ MonoBehaviour:
   - {fileID: 7447508018876170698, guid: 6eb963e9e494ae744a30634b55520435, type: 3}
   - {fileID: 7447508018876170698, guid: 2553257efa0f2a24d8e01f5972766b1f, type: 3}
   - {fileID: 7447508018876170698, guid: 5db9569117b423a418981ee9b6d8d643, type: 3}
-  timeBoostSpd: 10
+  dotObj: {fileID: 0}
+  canMove: 0
+  timeBoostSpd: 15
   timeAtk: 0.5
-  timeSpawn: 5
+  timeSpawn: 7
   timeSpawnEachEnemy: 0.25
-  timeExitGoToBaseBehaviour: 10
+  timeExitGoToBaseBehaviour: 12
   timeAtkExplosion: 3
   explosionDeath: {fileID: 1538002419}
+  startDeathExplosionClip: {fileID: 8300000, guid: 3ed052cd7572a73469f1fa87264e6230, type: 3}
+  agent: {fileID: 0}
+  area: 1.3
+  layerTest:
+    serializedVersion: 2
+    m_Bits: 4097
 --- !u!212 &7447508018876170700
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -543,7 +567,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7447508018876170698}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -553,9 +577,31 @@ Rigidbody2D:
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!195 &7091154702001398435
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447508018876170698}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 1
+  m_AngularSpeed: 999
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &7447508019058564931
 GameObject:
   m_ObjectHideFlags: 0

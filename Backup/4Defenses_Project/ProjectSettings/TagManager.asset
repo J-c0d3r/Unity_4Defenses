@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - bulletPlayer
+  - Enemy
+  - Base
+  - Boss
+  - LandMine
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - Player
+  - Boss
+  - Enemies
+  - Projectiles
+  - Nothing
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Ground
+    uniqueID: 3697911875
+    locked: 0
+  - name: Objects
+    uniqueID: 2710968221
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0

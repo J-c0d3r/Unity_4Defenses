@@ -48,9 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611fe3cc7119a524fa842ff8866ac4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 40
   speed: 40
-  timeToSelfDestroy: 0
+  timeToSelfDestroy: 0.07
   touchExplosion: {fileID: 5808244212922021929, guid: 3cd99bd6526f26a4aac94c4820fff7d2, type: 3}
 --- !u!212 &3587699998824155661
 SpriteRenderer:

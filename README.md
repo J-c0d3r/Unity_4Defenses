@@ -13,14 +13,22 @@ The idea of this game is you need to protect your base from monsters that come t
 <details>
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
-    0️⃣v0.6.0 - Beta
-    Just draw the scenario
-    Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
-    Implement mine for player
-    Configuration screen
-    Change the style fire of flamegun to some spawn points flames
-    Damage along time system(flames)
-    All Audios
+    0️⃣v0.6.0 - 🏆Beta Singleplayer
+    ✔️General balancement in the game
+    ✔️Just draw the scenario
+    ✔️Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
+    ✔️Implement NavMesh for AI enemies and boss
+    ✔️Add possibility to player get more life
+    ✔️Implement mine for player
+    ✔️Damage along time system(flames)
+    ✔️All Audios
+    ✔️Configuration screen
+    🛠️Change the style fire of flamegun to some spawn points flames
+    🛠️Add effect of black smoke when the player shoots
+    🛠️Add possibility to open and close windows through Escape button
+    🐛Enemy and boss doesn't know choose the better way
+    🔥Removed - Implement different stats(skills) for every characters like life, move and damage
+
 
 
     0️⃣v0.5.0
@@ -91,7 +99,6 @@ The idea of this game is you need to protect your base from monsters that come t
 - [x] Implement each bullet of each gun
 - [x] Improve Player's movimentation(collision, rigidbody, ...)
 - [ ] Add possibility to player switch your character
-- [ ] Implement different stats(skills) for every characters like life, move and damage
 - [ ] A little upgrade system(move, damage, life, speed shoot, countdown reloading...)
 - [x] Implement damage stats visual when player take any damage
 
@@ -105,25 +112,30 @@ The idea of this game is you need to protect your base from monsters that come t
 - [x] Implement AI boss
 - [x] Make a big green enemy as a boss
 - [x] Implement new enemies with different color
+- [x] Implement NavMesh for AI enemies and boss
 
 #### Resources
 
 - [ ] Implement cannon tower lvl 1
 - [ ] Implement flame tower lvl 1
-- [ ] Implement mine for player
+- [x] Implement mine for player
+- [x] Add possibility to player get life
 - [ ] Implement a kind of shop which to allow player buy news weapons, life, mine and towers
 - [ ] For every enemy the player kills, the enemies will drop some coins
 - [ ] Implement multiplayer online until 4 player
 
 #### Mechanics
 
-- [ ] Damage along time system(flames)
+- [x] Damage along time system(flames)
+- [ ] Camera short shake when player fires
+- [ ] Camera short shake when any enemy dies
+- [ ] Camera big shake when boss die - big explosion
 
 #### Scenario
 
-- [ ] Just draw the scenario
+- [x] Just draw the scenario
 - [x] Put base in the scenario and implement your functions
-- [ ] Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
+- [x] Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
 
 #### UI
 
@@ -135,27 +147,39 @@ The idea of this game is you need to protect your base from monsters that come t
 
 - [x] Menu Game Pt.1 - Main functions and little design
 - [ ] Menu Game Pt.2 - Complete functions and good responsive design
-- [ ] Configuration screen
+- [x] Configuration screen
 - [x] Victory
 - [x] Game Over (When base fall down or all players die)
 
 #### Audios
 
-- [ ] Machine gun
-- [ ] Shotgun
-- [ ] Flame gun
-- [ ] Player takes damage
-- [ ] Enemies spawn
-- [ ] Enemies explosion
-- [ ] Boss damage explosion
-- [ ] Boss death explosion
-- [ ] Button sound
-- [ ] Music in interval of waves
-- [ ] Music in the waves
-- [ ] Music victory
-- [ ] Music lose
-- [ ] Cannon tower
-- [ ] Flame tower
+##### Weapons
+
+- [x] Machine gun
+- [x] Shotgun
+- [x] Flame gun
+- [x] Land mine drop
+- [x] Land mine explosion
+
+##### Songs
+
+- [x] Song during interval of waves
+- [x] Song during in the waves
+- [x] Song boss
+- [x] Song victory
+- [x] Song game over
+- [x] Song menu
+
+##### Others
+
+- [x] Player hit
+- [x] Enemies spawn
+- [x] Enemies explosion
+- [x] Enemies die
+- [x] Boss damage explosion
+- [x] Boss start death explosion
+- [x] Boss death explosion
+- [x] Button sound
 
 <br>
 
@@ -163,15 +187,17 @@ The idea of this game is you need to protect your base from monsters that come t
 
 - [x] When the player shoots with shotgun downwards, he receives a knockback upwards
 - [ ] When time to follow player of enemy is between 0 and 3 and player inside in one of those circles, the enemy be lost until player get out the major area
-- [ ] Enemy and boss doesn't know choose the better way
+- [x] Enemy and boss doesn't know choose the better way
 
 <br>
 
 ### 🛠️Some Ajusts/Upgrades:<br>
 
-- [ ] General balancement in the game
-- [ ] Change the style fire of flamegun to some spawn points flames
-- [ ] Add effect of black smoke when the player shoots
+- [x] General balancement in the game
+- [ ] Improve dinamic render layer of sprites
+- [x] Add possibility to open and close windows through Escape button
+- [x] Change the style fire of flamegun to some spawn points flames
+- [x] Add effect of black smoke when the player shoots
 - [x] Add white effect when the guns' shoot collides
 - [x] When game over screen appears the player need to stay freeze
 - [x] Explosion effect when any enemy spawn

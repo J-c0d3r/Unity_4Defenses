@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b29967ab41cbc548a6b59ec4d3031ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 8
-  speed: 15
+  damage: 13
+  speed: 20
   timeToSelfDestroy: 1
   touchExplosion: {fileID: 5808244212922021929, guid: 3cd99bd6526f26a4aac94c4820fff7d2, type: 3}
 --- !u!212 &4646018287323125426

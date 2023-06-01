@@ -23,7 +23,7 @@ public class Projectile_MachineGun : Projectile
     {       
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<Enemy>().GetDamage(damage);
+            collision.gameObject.GetComponent<Enemy>().GetDamage(damage);            
         }
 
         if (collision.gameObject.CompareTag("Boss"))

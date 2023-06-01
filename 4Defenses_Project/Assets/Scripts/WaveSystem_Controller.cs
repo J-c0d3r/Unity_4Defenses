@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class WaveSystem_Controller : MonoBehaviour
 {
-    public static WaveSystem_Controller wsc;
+    public static WaveSystem_Controller instance;
 
+    private bool isPlayingIntervalWaves;
     private bool isWaveFinished;
     private bool canRunCycle;
     private int amountPlayers;
@@ -16,8 +17,8 @@ public class WaveSystem_Controller : MonoBehaviour
     private int amountEnemiesToSpawn;
     private int amountEnemiesSpawnedInScene;
     private int snapshotAmountEnemiesSpawnedInScene;
-    private int currentWave;
-    private int totalWave;
+    [SerializeField] private int currentWave; //temporary
+    [SerializeField] private int totalWave;
     private int currentAmountEnemies;
     private int totalAmountEnemies;
     private float intervalCountTime;
@@ -37,17 +38,36 @@ public class WaveSystem_Controller : MonoBehaviour
     [SerializeField] private Transform spawnBoss;
     [SerializeField] private List<GameObject> minionsPrefabList;
     [SerializeField] private List<Transform> spawnList;
+    [SerializeField] private GameObject waveTxt;
+    [SerializeField] private GameObject bossTxt;
+    [SerializeField] private Text totalWaveTxt;
     [SerializeField] private Text currentWaveTxt;
     [SerializeField] private Text currentAmountEnemiesTxt;
     [SerializeField] private Text currentTimeTxt;
 
-    //private void Awake()
-    //{
-    //    if (wsc != null)
-    //    {
-    //        wsc = this;
-    //    }
-    //}
+
+    public GameObject[] lifeGameObjectSpawned; // alterar depois
+    [Header("Powerup Life")]
+    [SerializeField] private GameObject lifePrefab;
+    [SerializeField] private List<Transform> spawnLifePointsList;
+
+
+    [Header("Audios")]
+    [SerializeField] private AudioClip bossSong;
+    [SerializeField] private AudioClip intervalWave;
+    [SerializeField] private List<AudioClip> waveSongs;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -55,41 +75,53 @@ public class WaveSystem_Controller : MonoBehaviour
 
         amountPlayers = 1; //get it in game manager when implement multiplayer        
         currentWave = 0;
-        totalWave = 5;
         intervalCountTime = 5f; //just for first wave
         isWaveFinished = true;
         currentTimeTxt.text = intervalCountTime.ToString("00");
+
+        bossTxt.SetActive(false);
+        waveTxt.SetActive(true);
+        totalWaveTxt.text = totalWave.ToString();
     }
 
 
     void Update()
     {
+        //interval waves
         if (isWaveFinished)
         {
-            if (currentWave < totalWave)
+            if (currentWave <= totalWave)
             {
                 intervalCountTime -= Time.deltaTime;
                 currentTimeTxt.text = intervalCountTime.ToString("00");
+
+                if (!isPlayingIntervalWaves)
+                {
+                    isPlayingIntervalWaves = true;
+                    Audio_Controller.instance.PlayMusic(intervalWave, true);
+                }
             }
-            if(currentWave == totalWave)
+            if (currentWave == totalWave + 1)
             {
                 isWaveFinished = false;
-                FindObjectOfType<GameManager>().ShowVictory();
+                //FindObjectOfType<GameManager>().ShowVictory();
+                GameManager.instance.ShowVictory();
             }
         }
 
+        //start new wave
         if (intervalCountTime <= 0)
         {
             currentWave++;
             currentWaveTxt.text = currentWave.ToString();
             intervalCountTime = intervalTime;
 
-            if (currentWave < totalWave)
+            if (currentWave <= totalWave)
             {
                 EnemyGeneratorConfig();
             }
 
-            if (currentWave == 5)
+            if (currentWave == totalWave + 1)
             {
                 StartCoroutine(BossGenerator());
             }
@@ -101,9 +133,14 @@ public class WaveSystem_Controller : MonoBehaviour
 
     IEnumerator BossGenerator()
     {
+        bossTxt.SetActive(true);
+        waveTxt.SetActive(false);
+        Audio_Controller.instance.PlayMusic(bossSong, true);
         isWaveFinished = false;
         currentAmountEnemies = 1;
         currentAmountEnemiesTxt.text = currentAmountEnemies.ToString();
+
+        GenerateLife();
 
         txtBossIsComing.SetActive(true);
         yield return new WaitForSeconds(3f);
@@ -123,9 +160,32 @@ public class WaveSystem_Controller : MonoBehaviour
         //Camera.main.transform.position = new Vector3(spawnBoss.position.x, spawnBoss.position.y);
         yield return new WaitForSeconds(3.2f);
         //Camera.main.transform.position = oldPosCam.position;
-        
+
         bossCam.SetActive(false);
         playerCam.SetActive(true);
+
+        //Qty life of boss
+        switch (amountPlayers)
+        {
+            case 1:
+                boss.GetComponent<GreenBoss>().SetTotalLife(1.0f);
+                break;
+
+            case 2:
+                boss.GetComponent<GreenBoss>().SetTotalLife(1.5f);
+                break;
+
+            case 3:
+                boss.GetComponent<GreenBoss>().SetTotalLife(2.0f);
+                break;
+
+            case 4:
+                boss.GetComponent<GreenBoss>().SetTotalLife(2.4f);
+                break;
+
+            default:
+                break;
+        }
 
         boss.GetComponent<GreenBoss>().canMove = true;
         player.canMove = true;
@@ -133,9 +193,14 @@ public class WaveSystem_Controller : MonoBehaviour
 
     private void EnemyGeneratorConfig()
     {
+        isPlayingIntervalWaves = false;
+        Audio_Controller.instance.PlayMusic(waveSongs[Random.Range(0, waveSongs.Count)], true);
         isWaveFinished = false;
         spawnCycle = 1;
         canRunCycle = true;
+
+        GenerateLife();
+
         switch (amountPlayers)
         {
             case 1:
@@ -157,7 +222,6 @@ public class WaveSystem_Controller : MonoBehaviour
             default:
                 break;
         }
-
 
         totalAmountEnemies = (int)(baseAmountEnemiesPerWave[currentWave - 1] * WaveLengthModifierAmountPlayers);
         currentAmountEnemies = totalAmountEnemies;
@@ -196,7 +260,8 @@ public class WaveSystem_Controller : MonoBehaviour
         if (currentAmountEnemies == 0)
             isWaveFinished = true;
 
-        currentAmountEnemiesTxt.text = currentAmountEnemies.ToString();
+        if (currentAmountEnemiesTxt != null)
+            currentAmountEnemiesTxt.text = currentAmountEnemies.ToString();
     }
 
     IEnumerator StartSpawnCycle()
@@ -242,6 +307,27 @@ public class WaveSystem_Controller : MonoBehaviour
 
             default:
                 return Random.Range(0, minionsPrefabList.Count);
+        }
+    }
+
+
+    private void GenerateLife()
+    {
+        //clean life that had spawned
+        for (int i = 0; i < lifeGameObjectSpawned.Length; i++)
+        {
+            if (lifeGameObjectSpawned[i] != null)
+            {
+                Destroy(lifeGameObjectSpawned[i]);
+                lifeGameObjectSpawned[i] = null;
+            }
+        }
+
+        //generate new lifes in scene
+        int qty = Random.Range(spawnLifePointsList.Count / 2, spawnLifePointsList.Count);
+        for (int i = 0; i < qty; i++)
+        {
+            lifeGameObjectSpawned[i] = Instantiate(lifePrefab, spawnLifePointsList[i].position, Quaternion.identity);
         }
     }
 

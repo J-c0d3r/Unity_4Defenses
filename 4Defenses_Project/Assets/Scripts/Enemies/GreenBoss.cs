@@ -1,6 +1,9 @@
+using NavMeshPlus.Extensions;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GreenBoss : BossEntity
 {
@@ -28,13 +31,25 @@ public class GreenBoss : BossEntity
 
     private GameManager gm;
     [SerializeField] private GameObject explosionDeath;
+    [SerializeField] private AudioClip startDeathExplosionClip;
+    [SerializeField] private NavMeshAgent agent;
 
+    int j = 0;
+    public float area;
+    //int count = 0;
+
+    public LayerMask layerTest;
 
     new void Start()
     {
         base.Start();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        agent = GetComponent<NavMeshAgent>();
         behaviour = "Spawn enemies";
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
 
@@ -49,7 +64,21 @@ public class GreenBoss : BossEntity
     private void FixedUpdate()
     {
         if (isAlive && canMove)
-            rig.velocity = new Vector2(movePosition.x, movePosition.y) * speed;
+        {
+            //rig.velocity = new Vector2(movePosition.x, movePosition.y) * speed;
+            agent.SetDestination(movePosition);
+            agent.speed = speed;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        //Gizmos.color = Color.black;
+        //Gizmos.DrawWireSphere(transform.position, agent.stoppingDistance);
+        //Gizmos.DrawWireSphere(transform.position, majorPlayerArea);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(spawnPoints[j].position, area);
     }
 
     public override void GetDamage(float dmg)
@@ -64,16 +93,16 @@ public class GreenBoss : BossEntity
         }
     }
 
-
     protected override void Die()
     {
         gm.BossDied();
         isAlive = false;
         collider.enabled = false;
         rig.velocity = Vector3.zero;
+        agent.isStopped = true;
         canvasBar.SetActive(false);
         anim.SetTrigger("die");
-
+        Audio_Controller.instance.PlaySFX(startDeathExplosionClip);
         Destroy(gameObject, 5.5f);
     }
 
@@ -156,12 +185,13 @@ public class GreenBoss : BossEntity
         }
     }
 
-    //maybe needs transform it in a coroutine method
     private void SpawnEnemies()
     {
-        movePosition = Vector3.zero;
+        //movePosition = Vector3.zero;
+        agent.isStopped = true;
         anim.SetInteger("transition", 2);
         timecountSpawn += Time.deltaTime;
+
         if (timecountSpawn <= timeSpawn)
         {
             timecountSpawnEachEnemy += Time.deltaTime;
@@ -169,9 +199,88 @@ public class GreenBoss : BossEntity
             {
                 timecountSpawnEachEnemy = 0f;
                 //GameObject obj = Instantiate(minionsPrefabList[(int)Random.Range(0f, minionsPrefabList.Count)], spawnPoints[(int)Random.Range(0f, minionsPrefabList.Count)]);
-                //obj.transform.localScale = new Vector2(obj.transform.localScale.x / transform.localScale.x, obj.transform.localScale.y / transform.localScale.y);                                
-                GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
-                obj.GetComponent<Enemy>().isSonOfBoss = true;
+                //obj.transform.localScale = new Vector2(obj.transform.localScale.x / transform.localScale.x, obj.transform.localScale.y / transform.localScale.y);                
+
+                bool couldSpawn = false;
+                int attempts = 0;
+
+                while (!couldSpawn && attempts <= (spawnPoints.Count * 20))
+                {
+                    j = Random.Range(0, spawnPoints.Count);
+
+                    //Collider2D hit = Physics2D.OverlapCircle(spawnPoints[j].position, area);
+                    Collider2D[] hitList = Physics2D.OverlapCircleAll(spawnPoints[j].position, area, layerTest);
+
+                    if (hitList.Length > 0)
+                    {
+                        foreach (Collider2D hit1 in hitList)
+                        {
+                            if (hit1.name == "TM_Ground0_Coll" || hit1.name == "Base" || hit1.name == "TM_Obj_Coll")
+                            {
+                                couldSpawn = false;
+                                attempts++;
+                                break;
+                            }
+                            else
+                            {
+                                couldSpawn = true;
+                            }
+
+                            //if (hit1.name == "TM_Ground0_Coll" || hit1.name == "Base")
+                            //{
+                            //    Debug.Log("if");
+                            //    //Debug.Log(hit1.name);
+                            //    attempts++;
+                            //    Debug.Log(attempts);
+                            //    return;
+                            //}
+                            //else
+                            //{
+                            //    Debug.Log("else");
+                            //    GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[j].position, Quaternion.identity);
+                            //    obj.GetComponent<Enemy>().isSonOfBoss = true;
+
+                            //    couldSpawn = true;
+                            //    return;
+
+                            //    //Debug.Log(hit1);
+                            //}
+                        }
+
+                        if (couldSpawn)
+                        {
+                            GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[j].position, Quaternion.identity);
+                            obj.GetComponent<Enemy>().isSonOfBoss = true;
+                        }
+
+                    }
+                    else
+                    {
+                        GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[j].position, Quaternion.identity);
+                        obj.GetComponent<Enemy>().isSonOfBoss = true;
+
+                        couldSpawn = true;
+                    }
+                    //string teste = "TM_Ground0_Coll";
+
+                    //if (hit != null && (hit.name == teste || hit.name == "Base"))
+                    //{
+                    //    Debug.Log("if");
+                    //    Debug.Log(hit.name);
+                    //    attempts++;
+                    //    Debug.Log(attempts);
+                    //}
+                    //else
+                    //{
+                    //    Debug.Log("else");
+                    //    GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[j].position, Quaternion.identity);
+                    //    obj.GetComponent<Enemy>().isSonOfBoss = true;
+
+                    //    couldSpawn = true;
+
+                    //    Debug.Log(hit);
+                    //}
+                }
             }
         }
         else
@@ -180,7 +289,7 @@ public class GreenBoss : BossEntity
             anim.SetInteger("transition", 0);
             probability = Random.Range(0f, 1f);
 
-            if (probability >= 0.6f)
+            if (probability <= 0.5f)
             {
                 behaviour = "Go to base";
                 snapshotLife = currentLife;
@@ -193,6 +302,7 @@ public class GreenBoss : BossEntity
 
             StartCoroutine(BoostSpeed());
             timecountSpawn = 0f;
+            agent.isStopped = false;
         }
     }
 
@@ -210,11 +320,14 @@ public class GreenBoss : BossEntity
 
     private void GoToBase()
     {
-        movePosition = (baseTarget.position - transform.position).normalized;
+        //movePosition = (baseTarget.position - transform.position).normalized;
+        movePosition = baseTarget.position;
+        //agent.SetDestination(baseTarget.position);
         timecountAtk += Time.deltaTime;
 
         if (canStartAtkBase && (timecountAtk >= timeAtk))
         {
+            agent.isStopped = true;
             timecountAtk = 0f;
             probability = Random.Range(0f, 1f);
 
@@ -230,11 +343,12 @@ public class GreenBoss : BossEntity
         }
 
         timecountExitActualBehaviour += Time.deltaTime;
-        if ((timecountExitActualBehaviour >= timeExitGoToBaseBehaviour) || ((snapshotLife - currentLife) >= (totalLife * 0.1f)))
+        if ((timecountExitActualBehaviour >= timeExitGoToBaseBehaviour) || ((snapshotLife - currentLife) >= (totalLife * 0.05f)))
         {
             timecountExitActualBehaviour = 0f;
             behaviour = "Chase the player";
             timeExitChasePlayerBehaviour = 10f;
+            agent.isStopped = false;
         }
     }
 
@@ -247,6 +361,7 @@ public class GreenBoss : BossEntity
 
     public void AtkExplosionEffect()
     {
+        Audio_Controller.instance.PlaySFX(explosionAtkClip);
         GameObject obj = Instantiate(explosionAtk, transform);
         obj.GetComponent<Explosion>().ReceivingDmg(dmgExplosion);
     }
@@ -260,7 +375,9 @@ public class GreenBoss : BossEntity
         //    movePosition = (playerTarget.position - transform.position).normalized;
         //}
 
-        movePosition = (playerTarget.position - transform.position).normalized;
+        //movePosition = (playerTarget.position - transform.position).normalized;
+        //agent.SetDestination(playerTarget.position);
+        movePosition = playerTarget.position;
 
         timecountAtkExplosion += Time.deltaTime;
 
@@ -290,5 +407,11 @@ public class GreenBoss : BossEntity
             timecountExitActualBehaviour = 0f;
             behaviour = "Spawn enemies";
         }
+    }
+
+    public void SetTotalLife(float newPercentLife)
+    {
+        totalLife *= newPercentLife;
+        currentLife = totalLife;
     }
 }

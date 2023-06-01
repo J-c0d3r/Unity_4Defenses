@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Base
   - Boss
+  - LandMine
+  - Life
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Boss
   - Enemies
   - Projectiles
-  - 
-  - 
+  - Nothing
+  - TileMapCollider
   - 
   - 
   - 
@@ -42,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 3697911875
+    locked: 0
+  - name: Objects
+    uniqueID: 2710968221
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -24,7 +24,7 @@ public class Projectile_Tomato : Projectile
 
     IEnumerator AnimationsTransitions()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(timeToSelfDestroy);
         anim.SetTrigger("explosion");
         rig.velocity /= 10f;
     }
@@ -48,7 +48,7 @@ public class Projectile_Tomato : Projectile
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
-    {        
+    {
         StopCoroutine("AnimationsTransitions");
         anim.SetTrigger("explosion");
         rig.velocity /= 10f;
@@ -56,6 +56,16 @@ public class Projectile_Tomato : Projectile
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().GetDamage(damage);
+
+            if (collision.gameObject.name == "Smile_BlackGreen_Minion")
+            {
+                collision.gameObject.GetComponent<Enemy>().HasKnockback(transform.position, 1000f, 0.1f);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Enemy>().HasKnockback(transform.position, 3000f, 0.15f);
+            }
+                        
         }
 
         if (collision.gameObject.CompareTag("Boss"))
