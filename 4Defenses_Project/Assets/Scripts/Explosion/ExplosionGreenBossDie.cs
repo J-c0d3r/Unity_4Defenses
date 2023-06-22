@@ -6,9 +6,10 @@ public class ExplosionGreenBossDie : MonoBehaviour
 {
     [SerializeField] private AudioClip explosionClipDeath;
 
-    public void PlaySoundExplodion()
+    public void ExplotionEffects()
     {
         Audio_Controller.instance.PlaySFX(explosionClipDeath);
+        CinemachineShake.instance.BossDieShakeCamera(10f, 2f, true);
     }
 
 }

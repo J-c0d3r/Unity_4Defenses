@@ -50,23 +50,23 @@ public class WeaponsController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SwitchingWeapon(0); //MG
+            SwitchingWeapon(0); //MachineG
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SwitchingWeapon(1); //SG
+            SwitchingWeapon(1); //ShotG
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            SwitchingWeapon(2); //FG
+            SwitchingWeapon(2); //FlameG
             wasDisable = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            SwitchingWeapon(3); //LM
+            SwitchingWeapon(3); //LandM
         }
     }
 

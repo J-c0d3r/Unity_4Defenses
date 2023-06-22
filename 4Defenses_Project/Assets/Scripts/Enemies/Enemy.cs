@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour
     //[SerializeField] private float towerArea;
 
 
-
     [Header("Life Bar")]
     public Image lifeBar;
     public GameObject canvasBar;
@@ -37,7 +36,7 @@ public class Enemy : MonoBehaviour
     private Vector2 movePosition;
     private SpriteRenderer spriteR;
     private NavMeshAgent agent;
-    //private WaveSystem_Controller movePosition;?
+
 
     [Header("Associations")]
     [SerializeField] private Transform baseTarget;
@@ -67,7 +66,6 @@ public class Enemy : MonoBehaviour
         agent.updateUpAxis = false;
 
         Instantiate(explosion0, transform.position, Quaternion.identity);
-        //put here explosion effect when it is created
     }
 
 
@@ -137,9 +135,7 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float dmg)
     {
         currentLife -= dmg;
-
         lifeBar.fillAmount = currentLife / totalLife;
-
         StartCoroutine(DmgEffect());
 
         if (currentLife <= 0)
@@ -161,6 +157,11 @@ public class Enemy : MonoBehaviour
     {
         //if (dotObj != null)
         //    Destroy(dotObj.gameObject);
+
+        if (spriteR.isVisible)
+            CinemachineShake.instance.ShakeCamera(3f, 0.2f);
+
+
         Audio_Controller.instance.PlaySFX(explosionDieClip);
         isAlive = false;
         //agent.isStopped = true;
@@ -173,10 +174,10 @@ public class Enemy : MonoBehaviour
     private void ExplosionItSelf()
     {
         //if (dotObj != null)
-        //    Destroy(dotObj.gameObject);
+        //    Destroy(dotObj.gameObject);        
         isAlive = false;
         agent.isStopped = true;
-        rig.velocity = Vector2.zero;        
+        rig.velocity = Vector2.zero;
         canvasBar.gameObject.SetActive(false);
         anim.SetTrigger("explosion");
         Destroy(gameObject, 0.7f);
@@ -187,27 +188,22 @@ public class Enemy : MonoBehaviour
         Audio_Controller.instance.PlaySFX(explosionClip);
         GameObject obj = Instantiate(explosion, transform.position, transform.rotation);
         obj.GetComponent<Explosion>().ReceivingDmg(dmgExplosion);
+        if (spriteR.isVisible)
+        {
+            CinemachineShake.instance.ShakeCamera(0f, 0f);
+            CinemachineShake.instance.ShakeCamera(4f, 0.2f);
+        }
     }
 
     private void OnDestroy()
     {
         if (!isSonOfBoss)
         {
-            //FindObjectOfType<WaveSystem_Controller>().UpdateAmountEnemiesInScene();
             var obj = FindObjectOfType<WaveSystem_Controller>();
             if (obj != null)
                 obj.UpdateAmountEnemiesInScene();
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    //|| collision.gameObject.CompareTag("Towers")
-    //    if (collision.gameObject.CompareTag("Base") || collision.gameObject.CompareTag("Player"))
-    //    {
-    //        ExplosionItSelf();
-    //    }
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -221,11 +217,6 @@ public class Enemy : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerController>().GetDamage(dmgCollision);
         }
-
-        //if (collision.gameObject.CompareTag("Tower"))
-        //{
-        //    collision.gameObject.GetComponent<Tower>().GetDamage(dmgCollision);
-        //}
     }
 
     public void HasKnockback(Vector3 collision, float force, float time)

@@ -47,6 +47,8 @@ public class Canvas_Controller : MonoBehaviour
         player.canMove = false;
         mouseSprite.gameObject.GetComponent<MousePointer>().isStoped = true;
         mouseCnvUI.SetActive(true);
+
+        Time.timeScale = 0f;
     }
 
     private void CloseEsc()
@@ -59,6 +61,8 @@ public class Canvas_Controller : MonoBehaviour
         player.canMove = true;
         mouseSprite.gameObject.GetComponent<MousePointer>().isStoped = false;
         mouseCnvUI.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
 
@@ -72,6 +76,8 @@ public class Canvas_Controller : MonoBehaviour
         configGrpBtns.SetActive(true);
         mouseCnvUI.SetActive(true);
         configPnl.SetActive(true);
+
+        Time.timeScale = 0f;
     }
 
     public void CloseConfig()
@@ -84,6 +90,8 @@ public class Canvas_Controller : MonoBehaviour
 
         configGrpBtns.SetActive(true);
         aimPnl.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
 

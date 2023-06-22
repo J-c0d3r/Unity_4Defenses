@@ -19,15 +19,7 @@ public class MenuController : MonoBehaviour
         audioSettPnl.SetActive(false);
 
         Audio_Controller.instance.PlayMusic(menuSong, true);
-
-        //StartCoroutine(PlayMusic());
     }
-
-    //IEnumerator PlayMusic()
-    //{
-    //    //Audio_Controller.instance.StopMusic();
-    //    yield return new WaitForSeconds(0.75f);                  
-    //}
 
     private void Update()
     {

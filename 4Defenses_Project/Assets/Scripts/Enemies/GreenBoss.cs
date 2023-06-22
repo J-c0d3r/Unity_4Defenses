@@ -30,19 +30,20 @@ public class GreenBoss : BossEntity
 
 
     private GameManager gm;
+    private SpriteRenderer spriteR;
     [SerializeField] private GameObject explosionDeath;
     [SerializeField] private AudioClip startDeathExplosionClip;
     [SerializeField] private NavMeshAgent agent;
 
     int j = 0;
     public float area;
-    //int count = 0;
 
     public LayerMask layerTest;
 
     new void Start()
     {
         base.Start();
+        spriteR = GetComponent<SpriteRenderer>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         agent = GetComponent<NavMeshAgent>();
@@ -84,7 +85,6 @@ public class GreenBoss : BossEntity
     public override void GetDamage(float dmg)
     {
         currentLife -= dmg;
-
         lifeBar.fillAmount = currentLife / totalLife;
 
         if (currentLife <= 0)
@@ -97,13 +97,13 @@ public class GreenBoss : BossEntity
     {
         gm.BossDied();
         isAlive = false;
-        collider.enabled = false;
+        boxCollider.enabled = false;
         rig.velocity = Vector3.zero;
         agent.isStopped = true;
         canvasBar.SetActive(false);
         anim.SetTrigger("die");
         Audio_Controller.instance.PlaySFX(startDeathExplosionClip);
-        Destroy(gameObject, 5.5f);
+        Destroy(gameObject, 8f);
     }
 
     private void OnDestroy()
@@ -111,7 +111,6 @@ public class GreenBoss : BossEntity
         var obj = FindObjectOfType<WaveSystem_Controller>();
         if (obj != null)
             obj.UpdateAmountEnemiesInScene();
-
     }
 
     public void ExplosionEffectDie()
@@ -225,26 +224,6 @@ public class GreenBoss : BossEntity
                             {
                                 couldSpawn = true;
                             }
-
-                            //if (hit1.name == "TM_Ground0_Coll" || hit1.name == "Base")
-                            //{
-                            //    Debug.Log("if");
-                            //    //Debug.Log(hit1.name);
-                            //    attempts++;
-                            //    Debug.Log(attempts);
-                            //    return;
-                            //}
-                            //else
-                            //{
-                            //    Debug.Log("else");
-                            //    GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[j].position, Quaternion.identity);
-                            //    obj.GetComponent<Enemy>().isSonOfBoss = true;
-
-                            //    couldSpawn = true;
-                            //    return;
-
-                            //    //Debug.Log(hit1);
-                            //}
                         }
 
                         if (couldSpawn)
@@ -261,25 +240,6 @@ public class GreenBoss : BossEntity
 
                         couldSpawn = true;
                     }
-                    //string teste = "TM_Ground0_Coll";
-
-                    //if (hit != null && (hit.name == teste || hit.name == "Base"))
-                    //{
-                    //    Debug.Log("if");
-                    //    Debug.Log(hit.name);
-                    //    attempts++;
-                    //    Debug.Log(attempts);
-                    //}
-                    //else
-                    //{
-                    //    Debug.Log("else");
-                    //    GameObject obj = Instantiate(minionsList[Random.Range(0, minionsList.Count)], spawnPoints[j].position, Quaternion.identity);
-                    //    obj.GetComponent<Enemy>().isSonOfBoss = true;
-
-                    //    couldSpawn = true;
-
-                    //    Debug.Log(hit);
-                    //}
                 }
             }
         }
@@ -364,6 +324,11 @@ public class GreenBoss : BossEntity
         Audio_Controller.instance.PlaySFX(explosionAtkClip);
         GameObject obj = Instantiate(explosionAtk, transform);
         obj.GetComponent<Explosion>().ReceivingDmg(dmgExplosion);
+        if (spriteR.isVisible)
+        {
+            CinemachineShake.instance.ShakeCamera(0f, 0f);
+            CinemachineShake.instance.ShakeCamera(4f, 0.2f);
+        }
     }
 
 

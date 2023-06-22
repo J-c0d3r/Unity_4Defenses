@@ -8,11 +8,13 @@ public class WeaponController : MonoBehaviour
     private float timeCount;
     [SerializeField] private int qtyPerShoot;
     [SerializeField] private float reloadShoot;
+    [SerializeField] private float camShakeIntensity;
+    [SerializeField] private float camShakeTime;
 
 
     [SerializeField] private GameObject smokeEffect;
     [SerializeField] private GameObject proj;
-    [SerializeField] private Transform projPoint;
+    [SerializeField] private Transform projPoint;    
 
     [SerializeField] private AudioClip shootSound;
 
@@ -45,6 +47,7 @@ public class WeaponController : MonoBehaviour
 
                 for (int i = 0; i < qtyPerShoot; i++)
                 {
+                    CinemachineShake.instance.ShakeCamera(camShakeIntensity, camShakeTime);
                     Instantiate(proj, projPoint.position, projPoint.rotation);
                 }
             }

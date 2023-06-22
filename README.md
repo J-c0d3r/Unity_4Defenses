@@ -13,7 +13,22 @@ The idea of this game is you need to protect your base from monsters that come t
 <details>
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
-    0️⃣v0.6.0 - 🏆Beta Singleplayer
+    0️⃣v0.7.0 - 🏆🏆Beta Single Player has been done
+    ✔️Add possibility to player switch your character
+    ✔️Camera short shake when player fires
+    ✔️Camera short shake when any enemy dies
+    ✔️Camera big shake when boss die - big explosion
+    ✔️Pause game functionality has been implemented in single player mode
+    ♻️Cinemachine has been implemented so MainCamera is independent now and player and boss has your own camera
+    🛠️Improve dinamic render layer of sprites
+    🔥Removed - A little upgrade system(move, damage, life, speed shoot, countdown reloading...)
+    🔥Removed - Implement cannon tower lvl 1
+    🔥Removed - Implement flame tower lvl 1
+    🔥Removed - Implement a kind of shop which to allow player buy news weapons, life, mine and towers
+    🔥Removed - For every enemy the player kills, the enemies will drop some coins
+
+
+    0️⃣v0.6.0 - 🏆Beta Single Player
     ✔️General balancement in the game
     ✔️Just draw the scenario
     ✔️Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
@@ -28,7 +43,6 @@ The idea of this game is you need to protect your base from monsters that come t
     🛠️Add possibility to open and close windows through Escape button
     🐛Enemy and boss doesn't know choose the better way
     🔥Removed - Implement different stats(skills) for every characters like life, move and damage
-
 
 
     0️⃣v0.5.0
@@ -57,6 +71,7 @@ The idea of this game is you need to protect your base from monsters that come t
     ✔️Implement AI in the minions enemies
     ♻️Code improved. Abstract Projectile. Hierarchy.
 
+
     0️⃣v0.3.2
     ✔️Implement each bullet of each gun.
 
@@ -67,6 +82,7 @@ The idea of this game is you need to protect your base from monsters that come t
     ✔️Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
     ✔️Improve Player's movimentation(collision, rigidbody, ...)
     🚧Implement each bullet of each gun
+
 
     0️⃣v0.2.0
     ♻️Readme updated
@@ -98,8 +114,7 @@ The idea of this game is you need to protect your base from monsters that come t
 - [x] Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
 - [x] Implement each bullet of each gun
 - [x] Improve Player's movimentation(collision, rigidbody, ...)
-- [ ] Add possibility to player switch your character
-- [ ] A little upgrade system(move, damage, life, speed shoot, countdown reloading...)
+- [x] Add possibility to player switch your character
 - [x] Implement damage stats visual when player take any damage
 
 #### Enemies
@@ -116,20 +131,17 @@ The idea of this game is you need to protect your base from monsters that come t
 
 #### Resources
 
-- [ ] Implement cannon tower lvl 1
-- [ ] Implement flame tower lvl 1
 - [x] Implement mine for player
 - [x] Add possibility to player get life
-- [ ] Implement a kind of shop which to allow player buy news weapons, life, mine and towers
-- [ ] For every enemy the player kills, the enemies will drop some coins
 - [ ] Implement multiplayer online until 4 player
+- [x] Pause game functionality in single player mode
 
 #### Mechanics
 
 - [x] Damage along time system(flames)
-- [ ] Camera short shake when player fires
-- [ ] Camera short shake when any enemy dies
-- [ ] Camera big shake when boss die - big explosion
+- [x] Camera short shake when player fires
+- [x] Camera short shake when any enemy dies
+- [x] Camera big shake when boss die - big explosion
 
 #### Scenario
 
@@ -186,15 +198,16 @@ The idea of this game is you need to protect your base from monsters that come t
 ### 🐛Fix Bugs:<br>
 
 - [x] When the player shoots with shotgun downwards, he receives a knockback upwards
-- [ ] When time to follow player of enemy is between 0 and 3 and player inside in one of those circles, the enemy be lost until player get out the major area
+- ~~[ ] When time to follow player of enemy is between 0 and 3 and player inside in one of those circles, the enemy be lost until player get out the major area~~
 - [x] Enemy and boss doesn't know choose the better way
+- ~~[ ] Set parent of flamesprite to enemy(visual bug)~~
 
 <br>
 
 ### 🛠️Some Ajusts/Upgrades:<br>
 
 - [x] General balancement in the game
-- [ ] Improve dinamic render layer of sprites
+- [x] Improve dinamic render layer of sprites
 - [x] Add possibility to open and close windows through Escape button
 - [x] Change the style fire of flamegun to some spawn points flames
 - [x] Add effect of black smoke when the player shoots

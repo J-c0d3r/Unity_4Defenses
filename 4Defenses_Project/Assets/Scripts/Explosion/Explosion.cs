@@ -6,7 +6,6 @@ public class Explosion : MonoBehaviour
 {
     private float damage;
 
-
     private void Start()
     {
         Destroy(gameObject, 0.8f);
@@ -17,11 +16,10 @@ public class Explosion : MonoBehaviour
         damage = dmg;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {            
+        {
             collision.gameObject.GetComponent<PlayerController>().GetDamage(damage);
         }
 
@@ -29,7 +27,5 @@ public class Explosion : MonoBehaviour
         {
             collision.gameObject.GetComponent<Base>().GetDamage(damage);
         }
-
-        //if for the towers
     }
 }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ public class WaveSystem_Controller : MonoBehaviour
     [SerializeField] private GameObject txtBossIsComing;
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private GameObject bossCam;
-    [SerializeField] private GameObject playerCam;
+    //[SerializeField] private GameObject playerCam;
     [SerializeField] private Transform spawnBoss;
     [SerializeField] private List<GameObject> minionsPrefabList;
     [SerializeField] private List<Transform> spawnList;
@@ -44,6 +45,7 @@ public class WaveSystem_Controller : MonoBehaviour
     [SerializeField] private Text currentWaveTxt;
     [SerializeField] private Text currentAmountEnemiesTxt;
     [SerializeField] private Text currentTimeTxt;
+    [SerializeField] private GameObject characterChanger;
 
 
     public GameObject[] lifeGameObjectSpawned; // alterar depois
@@ -75,7 +77,7 @@ public class WaveSystem_Controller : MonoBehaviour
 
         amountPlayers = 1; //get it in game manager when implement multiplayer        
         currentWave = 0;
-        intervalCountTime = 5f; //just for first wave
+        intervalCountTime = 10f; //just for first wave
         isWaveFinished = true;
         currentTimeTxt.text = intervalCountTime.ToString("00");
 
@@ -90,6 +92,7 @@ public class WaveSystem_Controller : MonoBehaviour
         //interval waves
         if (isWaveFinished)
         {
+            characterChanger.SetActive(true);
             if (currentWave <= totalWave)
             {
                 intervalCountTime -= Time.deltaTime;
@@ -112,6 +115,7 @@ public class WaveSystem_Controller : MonoBehaviour
         //start new wave
         if (intervalCountTime <= 0)
         {
+            characterChanger.SetActive(false);
             currentWave++;
             currentWaveTxt.text = currentWave.ToString();
             intervalCountTime = intervalTime;
@@ -140,29 +144,32 @@ public class WaveSystem_Controller : MonoBehaviour
         currentAmountEnemies = 1;
         currentAmountEnemiesTxt.text = currentAmountEnemies.ToString();
 
-        GenerateLife();
+        GeneratePowerLife();
 
         txtBossIsComing.SetActive(true);
         yield return new WaitForSeconds(3f);
         txtBossIsComing.SetActive(false);
 
         //Camera.main.enabled = false;
-        playerCam.SetActive(false);
-        bossCam.SetActive(true);
-
+        //playerCam.SetActive(false);
+        //bossCam.SetActive(true);
         PlayerController player = FindObjectOfType<PlayerController>();
+        player.canMove = false;
+        bossCam.GetComponent<CinemachineVirtualCamera>().Priority = 30;
+        yield return new WaitForSeconds(1.1f);
+
         //Transform oldPosCam = Camera.main.transform; //corrigir isto
         GameObject boss = Instantiate(bossPrefab, spawnBoss.position, Quaternion.identity);
-
         boss.GetComponent<GreenBoss>().canMove = false;
-        player.canMove = false;
 
         //Camera.main.transform.position = new Vector3(spawnBoss.position.x, spawnBoss.position.y);
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(3.5f);
         //Camera.main.transform.position = oldPosCam.position;
 
-        bossCam.SetActive(false);
-        playerCam.SetActive(true);
+        //bossCam.SetActive(false);
+        bossCam.GetComponent<CinemachineVirtualCamera>().Priority = 10;
+        yield return new WaitForSeconds(1f);
+        //playerCam.SetActive(true);
 
         //Qty life of boss
         switch (amountPlayers)
@@ -199,7 +206,7 @@ public class WaveSystem_Controller : MonoBehaviour
         spawnCycle = 1;
         canRunCycle = true;
 
-        GenerateLife();
+        GeneratePowerLife();
 
         switch (amountPlayers)
         {
@@ -311,9 +318,9 @@ public class WaveSystem_Controller : MonoBehaviour
     }
 
 
-    private void GenerateLife()
+    private void GeneratePowerLife()
     {
-        //clean life that had spawned
+        //clean power life that had been spawned
         for (int i = 0; i < lifeGameObjectSpawned.Length; i++)
         {
             if (lifeGameObjectSpawned[i] != null)
@@ -323,7 +330,7 @@ public class WaveSystem_Controller : MonoBehaviour
             }
         }
 
-        //generate new lifes in scene
+        //generate new power lifes in scene
         int qty = Random.Range(spawnLifePointsList.Count / 2, spawnLifePointsList.Count);
         for (int i = 0; i < qty; i++)
         {

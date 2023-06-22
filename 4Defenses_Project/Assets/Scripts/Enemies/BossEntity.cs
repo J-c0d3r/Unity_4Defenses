@@ -26,7 +26,7 @@ public abstract class BossEntity : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rig;
     protected Vector2 movePosition;
-    protected new Collider2D collider;
+    protected Collider2D boxCollider;
 
     [Header("Associations")]
     [SerializeField] protected Transform baseTarget;
@@ -42,7 +42,7 @@ public abstract class BossEntity : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
+        boxCollider = GetComponent<Collider2D>();
         baseTarget = GameObject.FindGameObjectWithTag("Base").transform;
 
         playerTarget = GameObject.FindGameObjectWithTag("Player").transform;
