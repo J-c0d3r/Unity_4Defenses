@@ -1,9 +1,9 @@
 # Unity_4Defenses
 
-It's a Top Down Shooter game style. I wished to develop a complete game only by me and I made this game by this way.
-The idea of this game is you need to protect your base from monsters that come to destroy it or you. So you need to kill them and keep alive yourself. You have some weapons and defends.
+It's a Top Down Shooter game style. I wished to develop a complete game only by myself and I made this game this way.
+The idea of this game is you need to protect your base from monsters that come to destroy it or you. So you need to kill them and keep yourself alive. You have some weapons and defences.
 
-<strong>Purpose:</strong> Develop a whole game by me and get more experience in 2D game style. It'll be better than previous game(JetFire) which I developed and it'll have more features such as multiplayer online, a little shop system, upgrade system and more, and that it might seem like a good complete 2D game with multiplayer.
+<strong>Purpose:</strong> Develop a whole game by me and get more experience in 2D game style. It'll be better than previous game(JetFire) which I developed and it'll have more features such as online multiplayer, a little shop system, upgrade system and more, and that it might seem like a good complete 2D game with multiplayer.
 
 <strong>Link: 🚧</strong>
 
@@ -14,24 +14,24 @@ The idea of this game is you need to protect your base from monsters that come t
     <summary><strong><font size = "5">Versions</font></strong></summary>
 
     0️⃣v0.7.0 - 🏆🏆Beta Single Player has been done
-    ✔️Add possibility to player switch your character
+    ✔️Add possibility for player to switch your character
     ✔️Camera short shake when player fires
     ✔️Camera short shake when any enemy dies
     ✔️Camera big shake when boss die - big explosion
     ✔️Pause game functionality has been implemented in single player mode
-    ♻️Cinemachine has been implemented so MainCamera is independent now and player and boss has your own camera
+    ♻️Cinemachine has been implemented, so MainCamera is independent now and player and boss has your own camera
     🛠️Improve dinamic render layer of sprites
     🔥Removed - A little upgrade system(move, damage, life, speed shoot, countdown reloading...)
     🔥Removed - Implement cannon tower lvl 1
     🔥Removed - Implement flame tower lvl 1
-    🔥Removed - Implement a kind of shop which to allow player buy news weapons, life, mine and towers
+    🔥Removed - Implement a kind of shop which allows player to buy new weapons, life, mine and towers
     🔥Removed - For every enemy the player kills, the enemies will drop some coins
 
 
     0️⃣v0.6.0 - 🏆Beta Single Player
     ✔️General balancement in the game
     ✔️Just draw the scenario
-    ✔️Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
+    ✔️Add collisions in some parts and some things in scenario(tree, scenario limiter...)
     ✔️Implement NavMesh for AI enemies and boss
     ✔️Add possibility to player get more life
     ✔️Implement mine for player
@@ -42,7 +42,7 @@ The idea of this game is you need to protect your base from monsters that come t
     🛠️Add effect of black smoke when the player shoots
     🛠️Add possibility to open and close windows through Escape button
     🐛Enemy and boss doesn't know choose the better way
-    🔥Removed - Implement different stats(skills) for every characters like life, move and damage
+    🔥Removed - Implement different stats(skills) for every characters like life, move speed and damage
 
 
     0️⃣v0.5.0
@@ -53,7 +53,7 @@ The idea of this game is you need to protect your base from monsters that come t
     ✔️Add Player's life bar
     ✔️Add some spawn points of enemies / Waves System
     ✔️Implement damage stats visual when player take any damage
-    ✔️Add possibility for player can switch mouse's aim
+    ✔️Add possibility for player to switch mouse's aim
     🛠️Implement damage stats visual when base receive any damage
     🛠️Explosion effect when any enemy spawn
     🛠️Add white effect when the guns' shoot collides
@@ -62,8 +62,8 @@ The idea of this game is you need to protect your base from monsters that come t
 
 
     0️⃣v0.4.0
-    ✔️Put base in the scenario and implement your functions
-    ✔️Implement green enemy(also your explosion)
+    ✔️Put base in the scenario and implement its functions
+    ✔️Implement green enemy(also its explosion)
     ✔️Add Enemies's life bar
     ✔️Make green enemy go to base and explode
     ✔️Implement new enemies with different color
@@ -79,7 +79,7 @@ The idea of this game is you need to protect your base from monsters that come t
     🚧Implement each bullet of each gun. 🐛There are some bugs.
 
     0️⃣v0.3.0
-    ✔️Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
+    ✔️Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between them
     ✔️Improve Player's movimentation(collision, rigidbody, ...)
     🚧Implement each bullet of each gun
 
@@ -111,7 +111,7 @@ The idea of this game is you need to protect your base from monsters that come t
 
 - [x] Implement first character
 - [x] Implement 8 directions of player
-- [x] Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between of them
+- [x] Implement 3 guns(Machinegun, Firegun, Shotgun) and to allow player switching between them
 - [x] Implement each bullet of each gun
 - [x] Improve Player's movimentation(collision, rigidbody, ...)
 - [x] Add possibility to player switch your character
@@ -119,8 +119,8 @@ The idea of this game is you need to protect your base from monsters that come t
 
 #### Enemies
 
-- [x] Implement green enemy(also your explosion)
-- [x] Make green enemy follows player
+- [x] Implement green enemy(also its explosion)
+- [x] Make green enemy follow player
 - [x] Make green enemy go to base and explode
 - [x] Add some spawn points of enemies / waves system
 - [x] Implement AI in the minions enemies
@@ -133,7 +133,7 @@ The idea of this game is you need to protect your base from monsters that come t
 
 - [x] Implement mine for player
 - [x] Add possibility to player get life
-- [ ] Implement multiplayer online until 4 player
+- [ ] Implement multiplayer online up to 4 player
 - [x] Pause game functionality in single player mode
 
 #### Mechanics
@@ -146,14 +146,14 @@ The idea of this game is you need to protect your base from monsters that come t
 #### Scenario
 
 - [x] Just draw the scenario
-- [x] Put base in the scenario and implement your functions
-- [x] Add collisions in some parts and somethings in scenario(tree, scenario limiter...)
+- [x] Put base in the scenario and implement its functions
+- [x] Add collisions in some parts and some things in scenario(tree, scenario limiter...)
 
 #### UI
 
 - [x] Add Player's life bar
 - [x] Add Enemies's life bar
-- [x] Add possibility for player can switch mouse's aim
+- [x] Add possibility for player switch mouse's aim
 
 #### Screens
 
@@ -161,7 +161,7 @@ The idea of this game is you need to protect your base from monsters that come t
 - [ ] Menu Game Pt.2 - Complete functions and good responsive design
 - [x] Configuration screen
 - [x] Victory
-- [x] Game Over (When base fall down or all players die)
+- [x] Game Over (When base falls down or all players die)
 
 #### Audios
 
@@ -204,7 +204,7 @@ The idea of this game is you need to protect your base from monsters that come t
 
 <br>
 
-### 🛠️Some Ajusts/Upgrades:<br>
+### 🛠️Some Adjustments/Upgrades:<br>
 
 - [x] General balancement in the game
 - [x] Improve dinamic render layer of sprites
