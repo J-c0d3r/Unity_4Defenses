@@ -6,6 +6,7 @@ The idea of this game is you need to protect your base from monsters that come t
 <strong>Purpose:</strong> Develop a whole game by me and get more experience in 2D game style. It'll be better than previous game(JetFire) which I developed and it'll have more features such as online multiplayer, a little shop system, upgrade system and more, and that it might seem like a good complete 2D game with multiplayer.
 
 <strong>Link: 🚧</strong>
+<strong>Version: 2021.3.23f1</strong>
 
 <br>
 <!-- <br> -->
